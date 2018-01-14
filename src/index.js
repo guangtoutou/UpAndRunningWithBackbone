@@ -1,5 +1,7 @@
-import $ from 'jquery'
-import Backbone from 'backbone'
+import $ from 'jquery';
+import Backbone from 'backbone';
+import MenuItemDetails from './menuItemDetails.js';
+
 
 
 var AppRouter = Backbone.Router.extend({
@@ -18,7 +20,15 @@ var AppRouter = Backbone.Router.extend({
 	},
 
 	itemDetails: function(item){
-		$('#app').html('Menu item:' + item);
+		var view = new MenuItemDetails(
+			{
+				name: item,
+				category: 'entry',
+				imagepath: './img/salad.jpg'
+			}
+		);
+
+		$('#app').html(view.render().el);
 	}
 });
 

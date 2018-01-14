@@ -5,5 +5,11 @@ module.exports = {
 
 	output: {
 		filename: 'bundle.js',
+	},
+
+	resolve: {
+		alias: {
+			handlebars: 'handlebars/dist/handlebars.min.js'
+		}
 	}
 };
