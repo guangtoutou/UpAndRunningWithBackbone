@@ -2,7 +2,13 @@ import $ from 'jquery';
 import Backbone from 'backbone';
 import MenuItemDetails from './menuItemDetails.js';
 
-
+var Menu = Backbone.Model.extend({
+	defaults:{
+		name:'',
+		category: 'entry',
+		imagepath: './img/salad.jpg'
+	}
+});
 
 var AppRouter = Backbone.Router.extend({
 	routes:{
@@ -20,15 +26,14 @@ var AppRouter = Backbone.Router.extend({
 	},
 
 	itemDetails: function(item){
-		var view = new MenuItemDetails(
+		var menu = new Menu();
+		var menuItemView = new MenuItemDetails(
 			{
-				name: item,
-				category: 'entry',
-				imagepath: './img/salad.jpg'
+				model: menu
 			}
 		);
-
-		$('#app').html(view.render().el);
+		menuItemView.model.set({category:item});
+		$('#app').html(menuItemView.render().el);
 	}
 });
 
