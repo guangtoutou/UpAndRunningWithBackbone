@@ -1,0 +1,24 @@
+[
+	{
+		"id":1,
+		"url":"chili",
+		"name":"Chili con carne",
+		"category":"Entrees",
+		"imagepath":"chili"
+	},
+	{
+		"id":2,
+		"url":"cheeseburger",
+		"name":"Cheeseburger",
+		"category":"Entrees",
+		"imagepath":"cheeseburger"
+	},
+	{
+		"id":3,
+		"url":"pizza",
+		"name":"Pizza",
+		"category":"Entrees",
+		"imagepath":"pizza"
+	}
+
+]

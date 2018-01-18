@@ -4,17 +4,17 @@ import Handlebars from 'handlebars'
 
 var MenuView = Backbone.View.extend({
 	initialize: function(){
-		this.render();
+		this.listenTo(this.collection,"reset", this.render);
 	},
-	
+
 	template: Handlebars.compile(
 		'<ul>' +
-		'{{#each items}}<li>{{this}}</li>{{/each}}' +
+		'{{#each models}}<li>{{attributes.url}}</li>{{/each}}' +
 		'</ul>'
 	),
 
 	render: function(){
-		this.$el.html(this.template(this.model.attributes));
+		this.$el.html(this.template(this.collection));
 		return this; 
 	}
 });

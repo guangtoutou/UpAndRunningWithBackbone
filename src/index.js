@@ -4,17 +4,23 @@ import MenuItemDetails from './menuItemDetails.js';
 import MenuView from './menuView.js';
 
 var MenuItem = Backbone.Model.extend({
+
 	defaults:{
+		id:'',
+		url:'',
 		name:'',
 		category: 'entry',
 		imagepath: './img/salad.jpg'
 	}
 });
 
+var MenuItems = Backbone.Collection.extend({
+	model: MenuItem,
+	url:'/item.json'
+});
+
 var Menu = Backbone.Model.extend({
-	defaults:{
-		items: ['Garden Salad','Pizza','Cheesecake']
-	}
+
 });
 
 var AppRouter = Backbone.Router.extend({
@@ -25,14 +31,15 @@ var AppRouter = Backbone.Router.extend({
 	},
 
 	initialize: function(){
-		var menuItem = new MenuItem(); 
-		this.menuItemView = new MenuItemDetails({model: menuItem});
+		this.menuItems = new MenuItems();
+		this.menuItems.fetch();
 
-		var menu = new Menu();
-		this.menuView = new MenuView({
-			model:menu
-		});
 
+		this.menuItem = new MenuItem(); 
+		this.menuItemView = new MenuItemDetails({model: this.menuItem});
+
+
+		this.menuView = new MenuView({collection:this.menuItems});
 	},
 
 	list: function(){
@@ -45,7 +52,6 @@ var AppRouter = Backbone.Router.extend({
 
 	itemDetails: function(item){
 
-		this.menuItemView.model.set({category:item});
 		$('#app').html(this.menuItemView.render().el);
 	}
 });
