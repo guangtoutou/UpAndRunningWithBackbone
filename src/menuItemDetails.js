@@ -1,18 +1,11 @@
-import Handlebars from 'handlebars'
-
-
+import $ from 'jquery';
+import _ from 'underscore';
 
 var MenuItemDetails = Backbone.View.extend({
 	initialize: function(){
 		this.render();
 	},
-	template: Handlebars.compile(
-		'<div>' +
-		'<h1>{{name}}</h1>' +
-		'<p><span class="label">{{category}}</span></p>' +
-		'<img src="{{imagepath}}" class="img-polaroid" />' +
-		'</div>'
-	),
+	template: _.template($('#menuItem-template').html()),
 
 	render: function(){
 		this.$el.html(this.template(this.model.attributes));

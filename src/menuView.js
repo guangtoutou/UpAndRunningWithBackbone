@@ -1,17 +1,12 @@
-import Handlebars from 'handlebars'
-
-
+import _ from 'underscore';
+import $ from 'jquery';
 
 var MenuView = Backbone.View.extend({
 	initialize: function(){
 		this.listenTo(this.collection,"reset", this.render);
 	},
 
-	template: Handlebars.compile(
-		'<ul>' +
-		'{{#each models}}<li>{{attributes.url}}</li>{{/each}}' +
-		'</ul>'
-	),
+	template: _.template($('#menu-template').html()),
 
 	render: function(){
 		this.$el.html(this.template(this.collection));

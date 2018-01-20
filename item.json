@@ -4,21 +4,21 @@
 		"url":"chili",
 		"name":"Chili con carne",
 		"category":"Entrees",
-		"imagepath":"chili"
+		"imagepath":"./img/salad.jpg"
 	},
 	{
 		"id":2,
 		"url":"cheeseburger",
 		"name":"Cheeseburger",
 		"category":"Entrees",
-		"imagepath":"cheeseburger"
+		"imagepath":"./img/salad.jpg"
 	},
 	{
 		"id":3,
 		"url":"pizza",
 		"name":"Pizza",
 		"category":"Entrees",
-		"imagepath":"pizza"
+		"imagepath":"./img/salad.jpg"
 	}
 
 ]

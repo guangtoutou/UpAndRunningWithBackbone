@@ -2,6 +2,7 @@ import $ from 'jquery';
 import Backbone from 'backbone';
 import MenuItemDetails from './menuItemDetails.js';
 import MenuView from './menuView.js';
+import MenuItemFormView from './menuItemFormView.js';
 
 var MenuItem = Backbone.Model.extend({
 
@@ -23,11 +24,12 @@ var Menu = Backbone.Model.extend({
 
 });
 
-var AppRouter = Backbone.Router.extend({
+var App = Backbone.Router.extend({
 	routes:{
 		"": "list",
 		"menu-items/new": "itemForm",
-		"menu-items/:item": "itemDetails"
+		"menu-items/:item": "itemDetails",
+		"order/:item":"orderItems"
 	},
 
 	initialize: function(){
@@ -38,8 +40,9 @@ var AppRouter = Backbone.Router.extend({
 		this.menuItem = new MenuItem(); 
 		this.menuItemView = new MenuItemDetails({model: this.menuItem});
 
-
 		this.menuView = new MenuView({collection:this.menuItems});
+
+		this.menuItemFormView = new MenuItemFormView({collection:this.menuItems});
 	},
 
 	list: function(){
@@ -47,16 +50,21 @@ var AppRouter = Backbone.Router.extend({
 	},
 
 	itemForm: function(){
-		$('#app').html('New item form');
+		$('#app').html(this.menuItemFormView.render().el);
 	},
 
 	itemDetails: function(item){
+		this.menuItemView.model = this.menuItems.get(item);
+		$('#app').html(this.menuItemView.render().el);
+	},
 
+	orderItems: function(item){
+		this.menuItemView.model = this.menuItems.get(item);
 		$('#app').html(this.menuItemView.render().el);
 	}
 });
 
-var app = new AppRouter();
+var app = new App();
 
 $(function(){
 	Backbone.history.start();
