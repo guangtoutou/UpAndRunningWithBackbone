@@ -1,3 +1,4 @@
+const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
 
 module.exports = {
@@ -11,5 +12,11 @@ module.exports = {
 		alias: {
 			handlebars: 'handlebars/dist/handlebars.min.js'
 		}
-	}
+	},
+	plugins:[new webpack.ProvidePlugin({
+		$: 'jquery',
+		jQuery: 'jquery',
+		_: 'underscore',
+		Backbone: 'backbone'
+	})]
 };

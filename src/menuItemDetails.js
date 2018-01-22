@@ -1,6 +1,3 @@
-import $ from 'jquery';
-import _ from 'underscore';
-
 var MenuItemDetails = Backbone.View.extend({
 	initialize: function(){
 		this.render();
@@ -13,4 +10,4 @@ var MenuItemDetails = Backbone.View.extend({
 	}
 });
 
-export default MenuItemDetails;
+module.exports = MenuItemDetails;

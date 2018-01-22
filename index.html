@@ -21,7 +21,7 @@
 	<script type="text/template" id="menu-template">
 		<ul>
 			<% _.each(models, function(model){ %>
-				<li><a href="#/order/<%= model.attributes.id %>"><%= model.attributes.name%></a></li>
+				<li><a href="#/menu-items/<%= model.attributes.id %>"><%= model.attributes.name%></a></li>
 			<% }); %>
 		</ul>
 	</script>
@@ -38,6 +38,7 @@
 <form action="" class="form-horizontal">
 	<fieldset>
 		<legend>New Menu Item</legend>
+		<div class="control-group"><input type="text" name="id" placeholder="id"/></div>
 		<div class="control-group"><input type="text" name="name" placeholder="Name"/></div>
 		<div class="control-group"><input type="text" name="category" placeholder="Category"/></div>
 		<div class="control-group"><input type="text" name="url" placeholder="URL"/></div>

@@ -1,6 +1,3 @@
-import _ from 'underscore';
-import $ from 'jquery';
-
 var MenuItemFormView = Backbone.View.extend({
 	initialize: function(){
 		this.render();
@@ -9,20 +6,23 @@ var MenuItemFormView = Backbone.View.extend({
 	template: _.template($('#menuItemForm-template').html()),
 
 	events:{
-		'click .btn-primary': 'setModelData'
+		'click .btn-primary': 'setModelData',
+		'click .btn-danger': function(){Backbone.history.navigate('', {trigger: true});}
 	},
 
 	setModelData: function(){
-		console.log(this.$el.find('input[name="name"]').val());
+
 		var a = {
+			id:this.$el.find('input[name="id"]').val(),
 			name:this.$el.find('input[name="name"]').val(),
 			category:this.$el.find('input[name="category"]').val(),
 			url:this.$el.find('input[name="url"]').val(),
 			imagepath:this.$el.find('input[name="imagepath"]').val()
 		};
-		console.log(a);
-		//this.collection.add(this.model);
-		Backbone.history.navigate('menu-items/'+ a.url, {trigger: true});
+		console.log(a.url);
+		this.collection.add(a);
+		console.log(this.collection);
+		Backbone.history.navigate('menu-items/'+ a.id, {trigger: true});
 	},
 
 	render: function(){
@@ -31,4 +31,4 @@ var MenuItemFormView = Backbone.View.extend({
 	}
 });
 
-export default MenuItemFormView;
+module.exports = MenuItemFormView;
