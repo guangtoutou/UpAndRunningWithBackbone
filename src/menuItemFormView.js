@@ -1,3 +1,5 @@
+import {app} from './global.js';
+
 var MenuItemFormView = Backbone.View.extend({
 	initialize: function(){
 		this.render();
@@ -31,4 +33,4 @@ var MenuItemFormView = Backbone.View.extend({
 	}
 });
 
-module.exports = MenuItemFormView;
+export default MenuItemFormView;
