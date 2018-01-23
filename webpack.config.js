@@ -1,10 +1,13 @@
 const path = require('path');
 
 module.exports = {
-	entry: './src/index.js',
+	entry: {
+		main:'./src/index.js',
+		test:['./src/1.js','./src/2.js']
+	},
 	devtool: 'eval-source-map',
 	output: {
-		filename: 'bundle.js',
+		filename: '[name].bundle.js',
 	},
 
 	resolve: {
